@@ -5,14 +5,14 @@ $sql = "CREATE TABLE IF NOT EXISTS $table (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `program_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `title` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `link` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `channel` char(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `channel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `inactive` tinyint(4) DEFAULT NULL,
+  `inactive` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique` (`program_name`,`title`,`link`)
-) ENGINE=InnoDB AUTO_INCREMENT=10524 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
 
 if ($con->query($sql) === TRUE) {
     echo "Table MyGuests created successfully";

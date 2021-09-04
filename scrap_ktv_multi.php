@@ -21,7 +21,7 @@ if ($con->query($sql) === TRUE) {
 }
 
 // $ip_addr = $_SERVER['REMOTE_ADDR'] . (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])? ' from '.$_SERVER['HTTP_X_FORWARDED_FOR']:'');
-
+/*
 $curr = time();
 $qry = "SELECT * FROM {$table} ORDER BY id DESC LIMIT 1";
 if($QR = $con->query($qry)){
@@ -34,7 +34,7 @@ if($QR = $con->query($qry)){
 } else {
   echo "Error: " . $qry . $con->error;
 }
-
+*/
 // $stmt = $con->prepare("INSERT INTO contacts(first_name, last_name, email, division, subject, message, ip_addr) VALUES (?, ?, ?, ?, ?, ?, ?)");
 // $stmt->bind_param('sssssss', $first_name, $last_name, $email, $division, $subject, $message, $ip_addr);
 

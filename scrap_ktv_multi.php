@@ -2,29 +2,16 @@
 require_once "dbconnect.php";
 $table = "ktvprograms";
 $sql = "CREATE TABLE IF NOT EXISTS $table (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `program_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `channel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `inactive` tinyint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `unique` (`program_name`,`title`,`link`)
-);
-// $sql = "CREATE TABLE IF NOT EXISTS $table (
-//   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-//   `program_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-//   `title` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
-//   `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-//   `channel` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-//   `created_at` datetime DEFAULT current_timestamp(),
-//   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-//   `inactive` tinyint DEFAULT NULL,
-//   PRIMARY KEY (`id`),
-//   UNIQUE KEY `unique` (`program_name`,`title`,`link`)
-// ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+program_name VARCHAR(50) NOT NULL,
+title VARCHAR(50) NOT NULL,
+link VARCHAR(255) DEFAULT NULL,
+channel VARCHAR(20) NOT NULL,
+created_at datetime DEFAULT current_timestamp(),
+updated_at datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+inactive tinyint,
+UNIQUE KEY(program_name, title, link)
+)";
 
 if ($con->query($sql) === TRUE) {
     echo "Table MyGuests created successfully";
@@ -33,7 +20,7 @@ if ($con->query($sql) === TRUE) {
 }
 
 // $ip_addr = $_SERVER['REMOTE_ADDR'] . (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])? ' from '.$_SERVER['HTTP_X_FORWARDED_FOR']:'');
-/*
+
 $curr = time();
 $qry = "SELECT * FROM {$table} ORDER BY id DESC LIMIT 1";
 if($QR = $con->query($qry)){
@@ -46,7 +33,7 @@ if($QR = $con->query($qry)){
 } else {
   echo "Error: " . $qry . $con->error;
 }
-*/
+
 // $stmt = $con->prepare("INSERT INTO contacts(first_name, last_name, email, division, subject, message, ip_addr) VALUES (?, ?, ?, ?, ?, ?, ?)");
 // $stmt->bind_param('sssssss', $first_name, $last_name, $email, $division, $subject, $message, $ip_addr);
 
